@@ -1,0 +1,9 @@
+AddDefaultCharset UTF-8
+ 
+Options -Indexes
+Options FollowSymlinks
+ 
+RewriteEngine On
+ 
+RewriteCond %{REQUEST_URI} ^/(task)
+RewriteRule ^(\/?.*)$ /task/web/$1 [L]

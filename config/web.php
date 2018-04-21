@@ -11,10 +11,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'homeUrl' => '/task',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'tphwYtw2IwylTudE76H9_CBDh5BoyD44',
+            'baseUrl' => '/task',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,15 +45,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
             ],
         ],
-        */
     ],
+    'defaultRoute' => 'site/index',
     'params' => $params,
 ];
 
