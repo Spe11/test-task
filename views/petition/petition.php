@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\widgets\ListView;
 
-$this->title = 'Обращение';
+$this->title = 'Обращения:';
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>

@@ -15,7 +15,15 @@ class Answer extends ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'required', 'message' => 'Введите сообщение']
+            [['text'], 'required', 'message' => 'Введите сообщение'],
+            ['question_id', 'safe']
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'text' => ''
         ];
     }
 }

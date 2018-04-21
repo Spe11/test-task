@@ -54,6 +54,12 @@ $config = [
             ],
         ],
     ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\Admin',
+            'defaultRoute' => 'petitions/all'
+        ],
+    ],
     'defaultRoute' => 'site/index',
     'params' => $params,
 ];
