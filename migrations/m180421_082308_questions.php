@@ -31,7 +31,7 @@ class m180421_082308_questions extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer(),
             'text' => $this->string(1000),
-            'status' => $this->boolean()
+            'status' => $this->boolean()->defaultValue(false)
         ]);
     }
 
