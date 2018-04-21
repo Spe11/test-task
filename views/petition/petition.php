@@ -16,7 +16,11 @@ $this->title = 'Обращение';
             'labelOptions' => ['class' => 'col-lg-1 control-label'],
         ],
     ]); ?>
-        <? if(Yii::$app->session->getFlash('success') !==null) { ?>
+        <? if(Yii::$app->session->getFlash('warning')) { ?>
+            <div class="col-lg-offset-1 col-lg-11">
+                <? Yii::$app->session->getFlash('warning'); ?>
+            </div>
+        <? } else if(Yii::$app->session->getFlash('success')) { ?>
             <div class="col-lg-offset-1 col-lg-11">
                 <? Yii::$app->session->getFlash('success'); ?>
             </div>

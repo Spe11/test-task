@@ -10,23 +10,6 @@ use app\models\Question;
 
 class PetitionController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index'],
-                'rules' => [
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ]
-        ];
-    }
-
     public function actions()
     {
         return [
@@ -37,6 +20,10 @@ class PetitionController extends Controller
     }
 
     public function actionIndex() {
+        if(Yii::$app->user->isGuest) {;
+            Yii::$app->session->setFlash('warning', "Доступо только для пользователей");
+        }
+
         $model = new Question;
         
         if ($model->load(Yii::$app->request->post())) {
