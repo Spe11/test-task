@@ -69,6 +69,7 @@ class Authentication extends Model
         if ($this->validate()) {
             $user = new User;
             $user->username = $this->username;
+            $user->mail = $this->mail;
             $user->setPassword($this->password);
             $user->generateAuthKey();
             return $user->save() ? $user : null;

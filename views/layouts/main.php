@@ -39,22 +39,23 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                ['label' => 'Вход', 'url' => ['site/login']],
-                ['label' => 'Регистрация', 'url' => ['site/registration']]
+                ['label' => 'Вход', 'url' => ['/login']],
+                ['label' => 'Регистрация', 'url' => ['/registration']]
             ],
         ]);
     } else {
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                    '<li>'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Выйти (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+                ['label' => 'Обращение', 'url' => ['site/petition']],
+                '<li>'
+                . Html::beginForm(['login/logout'], 'post')
+                . Html::submitButton(
+                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
             ],
         ]);
     }
