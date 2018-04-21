@@ -47,7 +47,7 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                ['label' => 'Обращение', 'url' => ['site/petition']],
+                ['label' => 'Обращение', 'url' => ['/petition']],
                 '<li>'
                 . Html::beginForm(['login/logout'], 'post')
                 . Html::submitButton(
