@@ -2,12 +2,19 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\widgets\ListView;
 
 $this->title = 'Обращение';
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
-
+   
+    <? foreach($models as $m) {?>
+    <?=Html::encode($m->name)?>
+    Статус: <?=Html::encode($m->info)?>
+        <p><?=Html::encode($m->questionText) ?>
+        <p><?=Html::encode($m->answerText) ?><hr>
+    <? } ?>
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',

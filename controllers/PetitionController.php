@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\Question;
+use yii\data\ActiveDataProvider;
 
 class PetitionController extends Controller
 {
@@ -36,7 +37,13 @@ class PetitionController extends Controller
         }
         
         return $this->render('petition', [
-            'model' => $model
+            'model' => $model, 'models' => $this->loadPetitions()
         ]);
+    }
+
+    private function loadPetitions() {
+        $user = Yii::$app->user->identity->id;
+        $models = Question::find()->where(['user_id' => $user])->all();
+        return $models;
     }
 }
