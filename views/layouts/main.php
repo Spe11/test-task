@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     $label = (Yii::$app->getUser()->identity->role->name === 'admin') ? 
-        ['label' => 'Все обращения', 'url' => ['/admin/petition']] : 
+        ['label' => 'Все обращения', 'url' => ['/admin/petitions']] : 
         ['label' => 'Обратиться', 'url' => ['/petition']];
     NavBar::begin([
         'brandLabel' => 'Главная',
