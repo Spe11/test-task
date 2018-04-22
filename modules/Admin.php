@@ -3,6 +3,7 @@
 namespace app\modules;
 
 use Yii;
+use yii\filters\AccessControl;
 
 /**
  * admin module definition class
@@ -24,16 +25,21 @@ class Admin extends \yii\base\Module
         // custom initialization code goes here
     }
 
-    public function beforeAction($action)
+    public function behaviors()
     {
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        if (Yii::$app->user->can('admin')) {
-            throw new \yii\web\ForbiddenHttpException('Страница недоступна для пользователей');
-        }
-
-        return true;
+        return [
+        'access' => [
+            'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
+                'denyCallback' => function($rule, $action){
+                        throw new \yii\web\ForbiddenHttpException;
+                }
+            ],
+        ];
     }
 }

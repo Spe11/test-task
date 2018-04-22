@@ -28,6 +28,9 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+    $label = (Yii::$app->getUser()->identity->role->name === 'admin') ? 
+        ['label' => 'Все обращения', 'url' => ['/admin/petition']] : 
+        ['label' => 'Обратиться', 'url' => ['/petition']];
     NavBar::begin([
         'brandLabel' => 'Главная',
         'brandUrl' => Yii::$app->homeUrl,
@@ -47,9 +50,9 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                ['label' => 'Обращение', 'url' => ['/petition']],
+                $label,
                 '<li>'
-                . Html::beginForm(['login/logout'], 'post')
+                . Html::beginForm(['/login/logout'], 'post')
                 . Html::submitButton(
                     'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']

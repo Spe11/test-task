@@ -13,6 +13,9 @@ $config = [
     ],
     'homeUrl' => '/task',
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager'
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'tphwYtw2IwylTudE76H9_CBDh5BoyD44',

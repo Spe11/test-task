@@ -34,12 +34,12 @@ class PetitionController extends Controller
     }
 
     private function saveQuestion($question) {
-        if ($model->load(Yii::$app->request->post())) {
-            if(!$model->validate()) {
+        if ($question->load(Yii::$app->request->post())) {
+            if(!$question->validate()) {
                 return null;
             }
-            $model->user_id = Yii::$app->user->identity->id;
-            $model->save();
+            $question->user_id = Yii::$app->user->identity->id;
+            $question->save();
             Yii::$app->session->setFlash('success', "Сообщение отправленно");
         }
     }
