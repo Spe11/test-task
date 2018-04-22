@@ -25,8 +25,15 @@ class PetitionController extends Controller
             Yii::$app->session->setFlash('warning', "Доступо только для пользователей");
         }
 
-        $model = new Question;
+        $question = new Question;
+        $this->saveQuestion($question);
         
+        return $this->render('petition', [
+            'model' => $question, 'models' => $this->loadQuestions()
+        ]);
+    }
+
+    private function saveQuestion($question) {
         if ($model->load(Yii::$app->request->post())) {
             if(!$model->validate()) {
                 return null;
@@ -35,13 +42,9 @@ class PetitionController extends Controller
             $model->save();
             Yii::$app->session->setFlash('success', "Сообщение отправленно");
         }
-        
-        return $this->render('petition', [
-            'model' => $model, 'models' => $this->loadPetitions()
-        ]);
     }
 
-    private function loadPetitions() {
+    private function loadQuestions() {
         $user = Yii::$app->user->identity->id;
         $models = Question::find()->where(['user_id' => $user])->all();
         return $models;

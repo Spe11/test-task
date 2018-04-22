@@ -21,6 +21,19 @@ class PetitionsController extends Controller
 
     public function actionAnswer($id) {
         $answer = new Answer;
+        $this->saveAnswer($answer);
+        $quest = Question::find()->where(['id' => $id])->one();
+        return $this->render('petition', [
+            'quest' => $quest, 'answer' => $answer
+        ]);
+    }
+
+    public function actionClose() {
+        
+        $this->redirect(['petitions/all']);
+    }
+
+    private function saveAnswer($answer) {
         if(Yii::$app->request->isPost) {
             if ($answer->load(Yii::$app->request->post())) {
                 if(!$answer->validate()) {
@@ -32,16 +45,6 @@ class PetitionsController extends Controller
             }
             $this->redirect(['petitions/all']);
         }
-
-        $quest = Question::find()->where(['id' => $id])->one();
-        return $this->render('petition', [
-            'quest' => $quest, 'answer' => $answer
-        ]);
-    }
-
-    public function actionClose() {
-        
-        $this->redirect(['petitions/all']);
     }
 
     private function closePetition($id) {
