@@ -57,7 +57,7 @@ $config = [
             ],
         ],
         'translator' => [
-            'class' => 'app\components\Translator',
+            'class' => 'app\components\Translator'
         ],
     ],
     'modules' => [

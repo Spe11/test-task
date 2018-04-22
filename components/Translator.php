@@ -9,10 +9,11 @@ use GuzzleHttp\Client;
 class Translator extends Component
 {
     private $client;
-    private $key = '?key=trnsl.1.1.20180422T172304Z.9e6056c6d74a3a25.7ff57f392c4b206a2094d2e49d730de8de0b0cf1';
+    private $key;
 
     public function __construct() {
         $this->client = new Client;
+        $this->key = '?key='.Yii::$app->params['key'];
     }
 
     public function toEng($from, $text) {
