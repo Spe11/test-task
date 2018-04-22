@@ -56,6 +56,9 @@ $config = [
             'rules' => [
             ],
         ],
+        'translator' => [
+            'class' => 'app\components\Translator',
+        ],
     ],
     'modules' => [
         'admin' => [

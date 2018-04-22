@@ -22,6 +22,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $text =Yii::$app->translator->toCustom('ru', 'dog');
+        var_dump($text); die;
         return $this->render('index');
     }
 }
