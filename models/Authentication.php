@@ -13,13 +13,14 @@ class Authentication extends Model
     public $username;
     public $password;
     public $mail;
+    public $language;
     public $rememberMe = true;
 
     public function scenarios()
     {
         return [
             self::SCENARIO_LOGIN => ['username', 'password'],
-            self::SCENARIO_REGISTER =>  ['username', 'password', 'mail']
+            self::SCENARIO_REGISTER =>  ['username', 'password', 'mail', 'language']
         ];
     }
 
@@ -37,7 +38,7 @@ class Authentication extends Model
             ['password', 'string', 'min' => 5, 'tooShort' => 'Пароль должно содержать больше 5 символов',
                 'on' => self::SCENARIO_REGISTER],
             ['rememberMe', 'boolean'],
-            ['mail', 'email', 'message' => 'Некоррретная почта'],
+            ['mail', 'email', 'message' => 'Некоррретная почта']
         ];
     }
 
@@ -70,6 +71,7 @@ class Authentication extends Model
             $user = new User;
             $user->username = $this->username;
             $user->mail = $this->mail;
+            $user->language = $this->language;
             $user->setPassword($this->password);
             $user->generateAuthKey();
             return $user->save() ? $user : null;

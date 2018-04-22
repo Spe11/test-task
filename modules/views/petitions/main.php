@@ -8,7 +8,6 @@ $this->title = 'Обращения:'; ?>
     <? foreach($models as $m) {?>
     <?=Html::encode($m->name)?>
         <p><?=Html::encode($m->questionText) ?>
-        <p><?=Html::encode($m->answerText) ?>
-        <?= Html::a('Ответить', Url::to(['answer', 'id' => $m->id]), ['class'=>'btn btn-primary']) ?>
+        <p><?= Html::a('Ответить', Url::to(['answer', 'id' => $m->id]), ['class'=>'btn btn-primary']) ?>
     <? } ?>
 </div>

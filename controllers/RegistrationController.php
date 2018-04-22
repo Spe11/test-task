@@ -33,9 +33,10 @@ class RegistrationController extends Controller
                 } 
             }
         }
+        $languages = Yii::$app->translator->languages();
 
         return $this->render('register', [
-            'model' => $model,
+            'model' => $model, 'languages' => $languages
         ]);
     }
 }

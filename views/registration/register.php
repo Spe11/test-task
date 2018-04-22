@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Вход';
+$this->title = 'Регистрация';
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -25,7 +25,9 @@ $this->title = 'Вход';
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <?= $form->field($model, 'mail')->textInput() ?> <hr>
+        <?= $form->field($model, 'mail')->textInput() ?>
+
+        <?= $form->field($model, 'language')->dropDownList($languages)->label('Выберите ваш язык'); ?> <hr>
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
