@@ -45,15 +45,21 @@ class Question extends ActiveRecord
         return $this->hasOne(Answer::className(), ['question_id' => 'id']);
     }
 
-    public function getQuestionText() {
+    public function getQuestionTextEng() {
         $text = Yii::$app->translator->toEng($this->user->language, $this->text);
         return 'Текст обращения: '.$text;
     }
 
+    public function getQuestionText() {
+        return 'Текст обращения: '.$this->text;
+    }
+
     public function getAnswerText()
     {
-        $text = Yii::$app->translator->toCustom($this->user->language, $this->answer->text);
-        if($this->status === 1) return 'Ответ: '.$text;
+        if($this->status === 1) {
+            $text = Yii::$app->translator->toCustom($this->user->language, $this->answer->text);
+             return 'Ответ: '.$text;
+        }
         return '';
     }
 }

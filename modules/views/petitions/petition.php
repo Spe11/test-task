@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 
 Html::encode($quest->name)?>
-<p><?=Html::encode($quest->questionText) ?>
+<p><?=Html::encode($quest->questionTextEng) ?>
 <?php $form = ActiveForm::begin([
     'id' => 'login-form',
     'layout' => 'horizontal',
